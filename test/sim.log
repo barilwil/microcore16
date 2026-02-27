@@ -1,0 +1,124 @@
+Command: /home/wb/Test/Procerros/./simv_tb -no_save -l sim.log
+Chronologic VCS simulator copyright 1991-2025
+Contains Synopsys proprietary information.
+Compiler version X-2025.06-SP1-1_Full64; Runtime version X-2025.06-SP1-1_Full64;  Feb 26 21:43 2026
+
+=== TEST 1: basic ALU + x0 + SW ===
+[ OK ] basic: x1 = 0x00000005
+[ OK ] basic: x2 = 0xfffffffd
+[ OK ] basic: x3 = 0x00000002
+[ OK ] basic: x4 = 0x00000008
+[ OK ] x0: x0 = 0x00000000
+[ OK ] sw: mem32[0x100] = 0x00000008
+[METRIC] TEST1: cycles=121 retired~=8 memR=20 memW=2 shiftSteps=0 CPI~=15.125000
+
+=== TEST 2: LB/LBU/LH/LHU/LW sign/zero extension ===
+[ OK ] load_ext: x1 = 0x00000001
+[ OK ] load_ext: x2 = 0x00000080
+[ OK ] load_ext: x3 = 0xffff8001
+[ OK ] load_ext: x4 = 0x00008001
+[ OK ] load_ext: x6 = 0x7fee8001
+[METRIC] TEST2: cycles=126 retired~=8 memR=24 memW=0 shiftSteps=0 CPI~=15.750000
+
+=== TEST 3: SB/SH/SW (RMW byte store) ===
+[ OK ] store_sizes (after SB/SB): x2 = 0xffffddcc
+[ OK ] store_sizes (after SH): x3 = 0x00001122
+[ OK ] store_sizes (after SW/LW): x4 = 0x00003344
+[ OK ] store_sizes mem: mem16[0x300] = 0x3344
+[ OK ] store_sizes mem: mem16[0x302] = 0x0000
+[METRIC] TEST3: cycles=234 retired~=12 memR=40 memW=5 shiftSteps=0 CPI~=19.500000
+
+=== TEST 4: branches signed/unsigned (BLT/BLTU/BGEU) ===
+[ OK ] branches (x3 must be 0): x3 = 0x00000000
+[METRIC] TEST4: cycles=115 retired~=6 memR=20 memW=0 shiftSteps=0 CPI~=19.166667
+
+=== TEST 5: serial shifts (SRA/SRL/SLL + shamt masking) ===
+[ OK ] shifts: x1 = 0x80000001
+[ OK ] shifts: x2 = 0xc0000000
+[ OK ] shifts: x3 = 0x40000000
+[ OK ] shifts: x4 = 0x00000000
+[ OK ] shifts (mask shamt): x6 = 0x00800000
+[METRIC] shift_steps=12 (should be >0 due to serial shifting)
+[METRIC] TEST5: cycles=120 retired~=9 memR=20 memW=0 shiftSteps=12 CPI~=13.333333
+
+=== TEST 6: randomized ALU smoke (ADD/SUB/XOR/AND/OR/SLT/SLTU) ===
+[ OK ] rand/add: mem32[0x400] = 0xfe5d9a08
+[ OK ] rand/sub: mem32[0x404] = 0x5d1044d0
+[ OK ] rand/xor: mem32[0x408] = 0xfd1045f0
+[ OK ] rand/and: mem32[0x40c] = 0x00a6aa0c
+[ OK ] rand/or: mem32[0x410] = 0xfdb6effc
+[ OK ] rand/slt: mem32[0x414] = 0x00000000
+[ OK ] rand/sltu: mem32[0x418] = 0x00000001
+[ OK ] rand/add: mem32[0x41c] = 0xb785a652
+[ OK ] rand/sub: mem32[0x420] = 0xcfeae8aa
+[ OK ] rand/xor: mem32[0x424] = 0x307519aa
+[ OK ] rand/and: mem32[0x428] = 0x43884654
+[ OK ] rand/or: mem32[0x42c] = 0x73fd5ffe
+[ OK ] rand/slt: mem32[0x430] = 0x00000001
+[ OK ] rand/sltu: mem32[0x434] = 0x00000001
+[ OK ] rand/add: mem32[0x438] = 0x8d6633a1
+[ OK ] rand/sub: mem32[0x43c] = 0xc705931f
+[ OK ] rand/xor: mem32[0x440] = 0x4905b321
+[ OK ] rand/and: mem32[0x444] = 0x22304040
+[ OK ] rand/or: mem32[0x448] = 0x6b35f361
+[ OK ] rand/slt: mem32[0x44c] = 0x00000001
+[ OK ] rand/sltu: mem32[0x450] = 0x00000001
+[ OK ] rand/add: mem32[0x454] = 0xd82a5164
+[ OK ] rand/sub: mem32[0x458] = 0x3e34b5c0
+[ OK ] rand/xor: mem32[0x45c] = 0xc7d54e40
+[ OK ] rand/and: mem32[0x460] = 0x082a8192
+[ OK ] rand/or: mem32[0x464] = 0xcfffcfd2
+[ OK ] rand/slt: mem32[0x468] = 0x00000000
+[ OK ] rand/sltu: mem32[0x46c] = 0x00000001
+[ OK ] rand/add: mem32[0x470] = 0x133e70b2
+[ OK ] rand/sub: mem32[0x474] = 0x2cba0876
+[ OK ] rand/xor: mem32[0x478] = 0xecbe088a
+[ OK ] rand/and: mem32[0x47c] = 0x13403414
+[ OK ] rand/or: mem32[0x480] = 0xfffe3c9e
+[ OK ] rand/slt: mem32[0x484] = 0x00000001
+[ OK ] rand/sltu: mem32[0x488] = 0x00000000
+[ OK ] rand/add: mem32[0x48c] = 0xca003af5
+[ OK ] rand/sub: mem32[0x490] = 0x4aa5f2d7
+[ OK ] rand/xor: mem32[0x494] = 0xb5fe32e9
+[ OK ] rand/and: mem32[0x498] = 0x0a010406
+[ OK ] rand/or: mem32[0x49c] = 0xbfff36ef
+[ OK ] rand/slt: mem32[0x4a0] = 0x00000001
+[ OK ] rand/sltu: mem32[0x4a4] = 0x00000000
+[ OK ] rand/add: mem32[0x4a8] = 0x7b99b5d2
+[ OK ] rand/sub: mem32[0x4ac] = 0x90c3a83e
+[ OK ] rand/xor: mem32[0x4b0] = 0x7345a9c2
+[ OK ] rand/and: mem32[0x4b4] = 0x042a0608
+[ OK ] rand/or: mem32[0x4b8] = 0x776fafca
+[ OK ] rand/slt: mem32[0x4bc] = 0x00000001
+[ OK ] rand/sltu: mem32[0x4c0] = 0x00000001
+[ OK ] rand/add: mem32[0x4c4] = 0x0a629456
+[ OK ] rand/sub: mem32[0x4c8] = 0x9b1b169e
+[ OK ] rand/xor: mem32[0x4cc] = 0xe51d6ba6
+[ OK ] rand/and: mem32[0x4d0] = 0x12a29458
+[ OK ] rand/or: mem32[0x4d4] = 0xf7bffffe
+[ OK ] rand/slt: mem32[0x4d8] = 0x00000001
+[ OK ] rand/sltu: mem32[0x4dc] = 0x00000000
+[ OK ] rand/add: mem32[0x4e0] = 0x48cf185a
+[ OK ] rand/sub: mem32[0x4e4] = 0x6839451e
+[ OK ] rand/xor: mem32[0x4e8] = 0xa8cec722
+[ OK ] rand/and: mem32[0x4ec] = 0x5000289c
+[ OK ] rand/or: mem32[0x4f0] = 0xf8ceefbe
+[ OK ] rand/slt: mem32[0x4f4] = 0x00000000
+[ OK ] rand/sltu: mem32[0x4f8] = 0x00000001
+[ OK ] rand/add: mem32[0x4fc] = 0xef82b39f
+[ OK ] rand/sub: mem32[0x500] = 0x52a4f2fd
+[ OK ] rand/xor: mem32[0x504] = 0xef7d331f
+[ OK ] rand/and: mem32[0x508] = 0x0002c040
+[ OK ] rand/or: mem32[0x50c] = 0xef7ff35f
+[ OK ] rand/slt: mem32[0x510] = 0x00000000
+[ OK ] rand/sltu: mem32[0x514] = 0x00000001
+[METRIC] TEST6: cycles=2796 retired~=125 memR=392 memW=140 shiftSteps=0 CPI~=22.368000
+
+=== ALL TESTS PASSED ===
+[METRIC][LAST] cycles=2796 retired~=125 mem_reads=392 mem_writes=140 shift_steps=0 CPI~=22.368000
+$finish called from file "tb_microcore16.sv", line 736.
+$finish at simulation time             35535000
+           V C S   S i m u l a t i o n   R e p o r t 
+Time: 35535000 ps
+CPU Time:      0.120 seconds;       Data structure size:   0.0Mb
+Thu Feb 26 21:43:13 2026

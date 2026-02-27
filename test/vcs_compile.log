@@ -1,0 +1,45 @@
+Command: vcs -full64 -sverilog -timescale=1ns/1ps -top tb_microcore16 -o simv_tb \
+tb_microcore16.sv tt_wrapper.sv processor.sv external_memory.sv -debug_access+all \
+-l vcs_compile.log
+                         Chronologic VCS (TM)
+      Version X-2025.06-SP1-1_Full64 -- Thu Feb 26 21:43:07 2026
+
+                    Copyright (c) 1991 - 2025 Synopsys, Inc.
+   This software and the associated documentation are proprietary to Synopsys,
+ Inc. This software may only be used in accordance with the terms and conditions
+ of a written license agreement with Synopsys, Inc. All other use, reproduction,
+   or distribution of this software is strictly prohibited.  Licensed Products
+     communicate with Synopsys servers for the purpose of providing software
+    updates, detecting software piracy and verifying that customers are using
+    Licensed Products in conformity with the applicable License Key for such
+  Licensed Products. Synopsys will use information gathered in connection with
+    this process to deliver software updates and pursue software pirates and
+                                   infringers.
+
+ Inclusivity & Diversity - Visit SolvNetPlus to read the "Synopsys Statement on
+            Inclusivity and Diversity" (Refer to article 000036315 at
+                        https://solvnetplus.synopsys.com)
+
+Parsing design file 'tb_microcore16.sv'
+Parsing design file 'tt_wrapper.sv'
+Parsing design file 'processor.sv'
+Parsing design file 'external_memory.sv'
+Top Level Modules:
+       tb_microcore16
+TimeScale is 1 ns / 1 ps
+Starting vcs inline pass...
+4 modules and 0 UDP read.
+recompiling module tb_microcore16
+	However, due to incremental compilation, only 1 module needs to be compiled. 
+rm -f _cuarc*.so _csrc*.so pre_vcsobj_*.so share_vcsobj_*.so
+if [ -x ../simv_tb ]; then chmod a-x ../simv_tb; fi
+g++  -o ../simv_tb      -rdynamic  -Wl,-rpath='$ORIGIN'/simv_tb.daidir -Wl,-rpath=./simv_tb.daidir \
+-Wl,-rpath=/opt/coe/synopsys/vcs/X-2025.06-SP1-1/linux64/lib -L/opt/coe/synopsys/vcs/X-2025.06-SP1-1/linux64/lib \
+-Wl,-rpath-link=./  /usr/lib64/libnuma.so.1   objs/amcQw_d.o   _9783_archive_1.so \
+_prev_archive_1.so   SIM_l.o      rmapats_mop.o rmapats.o rmar.o rmar_nd.o  rmar_llvm_0_1.o \
+rmar_llvm_0_0.o            -lvirsim -lerrorinf -lsnpsmalloc -lvfs      -lvcsnew -ldistsimclient \
+-lsimprofile -luclinative /opt/coe/synopsys/vcs/X-2025.06-SP1-1/linux64/lib/vcs_tls.o \
+-Wl,-whole-archive  -lvcsucli    -Wl,-no-whole-archive          /opt/coe/synopsys/vcs/X-2025.06-SP1-1/linux64/lib/vcs_save_restore_new.o \
+-ldl  -lc -lm -lpthread -ldl 
+../simv_tb up to date
+CPU time: .376 seconds to compile + .201 seconds to elab + .184 seconds to link
